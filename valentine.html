@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Valentine 💖</title>
+
+<style>
+:root{
+  --pink:#ff4d6d;
+  --rose:#ff8fab;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  height:100vh;
+  background:
+    radial-gradient(circle at bottom, #ffb3c6, transparent 45%),
+    linear-gradient(135deg,#ff758c,#ff7eb3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
+}
+
+/* 🌟 MAIN FRAME */
+.frame{
+  width:420px;
+  padding:35px 30px;
+  border-radius:35px;
+  background:rgba(255,255,255,0.25);
+  backdrop-filter:blur(18px);
+  text-align:center;
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.35),
+    inset 0 0 30px rgba(255,255,255,0.4);
+  position:relative;
+  z-index:2;
+  animation:zoomIn 1.4s ease;
+}
+
+@keyframes zoomIn{
+  from{transform:scale(0.6);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.frame::before{
+  content:'';
+  position:absolute;
+  inset:-3px;
+  border-radius:35px;
+  background:linear-gradient(120deg,#ff4d6d,#ffb3c6,#ff4d6d);
+  z-index:-1;
+  filter:blur(25px);
+}
+
+/* 💖 TITLE */
+h1{
+  font-size:30px;
+  color:#fff;
+  text-shadow:0 6px 14px rgba(0,0,0,0.4);
+  margin-bottom:20px;
+}
+
+/* 🖼️ PHOTO */
+.photo{
+  width:100%;
+  border-radius:25px;
+  border:6px solid #fff;
+  box-shadow:0 18px 40px rgba(0,0,0,0.35);
+  margin:20px 0;
+}
+
+/* 💌 MESSAGE */
+p{
+  color:#fff;
+  font-size:18px;
+  line-height:1.7;
+  text-shadow:0 4px 10px rgba(0,0,0,0.35);
+}
+
+/* ❤️ FLOATING HEARTS */
+.heart{
+  position:absolute;
+  bottom:-30px;
+  font-size:22px;
+  animation:floatUp linear infinite;
+  opacity:0.85;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(0) scale(1);opacity:1;}
+  to{transform:translateY(-120vh) scale(1.7);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 BACKGROUND MUSIC (same ya alag song bhi rakh sakta hai) -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="frame">
+  <h1>Happy Valentine’s Day 💘</h1>
+
+  <!-- 🔁 Yaha apni girlfriend / couple photo ka path -->
+  <img src="valentine.jpg" class="photo">
+
+  <p>
+    You are not just my Valentine,<br>
+    you are my heart, my smile & my forever ❤️<br><br>
+
+    Every moment with you feels magical ✨<br>
+    I promise to love you today, tomorrow & always 💖
+  </p>
+</div>
+
+<script>
+/* ❤️ HEART GENERATOR */
+function heart(){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=Math.random()*22+18+"px";
+  h.style.animationDuration=Math.random()*3+5+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),7000);
+}
+setInterval(heart,260);
+</script>
+
+</body>
+</html>

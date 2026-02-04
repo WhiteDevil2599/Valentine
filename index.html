@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💖</title>
+
+<style>
+:root{
+  --pink:#ff4d6d;
+  --rose:#ff8fab;
+  --light:#fff0f5;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  height:100vh;
+  background:
+    radial-gradient(circle at top, #ffb3c6, transparent 40%),
+    linear-gradient(135deg,#ff758c,#ff7eb3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
+}
+
+/* 🌟 GLASS CARD */
+.card{
+  width:380px;
+  padding:40px 30px;
+  border-radius:30px;
+  background:rgba(255,255,255,0.25);
+  backdrop-filter:blur(18px);
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.3),
+    inset 0 0 30px rgba(255,255,255,0.4);
+  text-align:center;
+  position:relative;
+  z-index:2;
+  animation:pop 1.2s ease;
+}
+
+@keyframes pop{
+  0%{transform:scale(0.7);opacity:0;}
+  100%{transform:scale(1);opacity:1;}
+}
+
+.card::before{
+  content:'';
+  position:absolute;
+  inset:-3px;
+  border-radius:30px;
+  background:linear-gradient(120deg,#ff4d6d,#ffb3c6,#ff4d6d);
+  z-index:-1;
+  filter:blur(20px);
+}
+
+/* 💕 PHOTO */
+.girl-img{
+  width:150px;
+  height:150px;
+  object-fit:cover;
+  border-radius:50%;
+  border:6px solid white;
+  box-shadow:0 15px 30px rgba(0,0,0,0.3);
+  margin-bottom:20px;
+}
+
+/* ❤️ TEXT */
+h1{
+  font-size:26px;
+  color:#fff;
+  text-shadow:0 4px 10px rgba(0,0,0,0.4);
+  margin-bottom:25px;
+}
+
+/* 💖 BUTTONS */
+button{
+  padding:14px 30px;
+  border:none;
+  border-radius:40px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  margin:8px;
+  transition:0.35s ease;
+}
+
+#yes{
+  background:linear-gradient(135deg,#ff4d6d,#ff8fab);
+  color:white;
+  box-shadow:0 10px 25px rgba(255,77,109,0.6);
+}
+
+#yes:hover{
+  transform:scale(1.08);
+}
+
+#no{
+  background:#f1f1f1;
+  position:absolute;
+  color:#333;
+}
+
+/* 💌 LOVE MESSAGE */
+#loveMessage{
+  display:none;
+  margin-top:20px;
+  font-size:26px;
+  font-weight:700;
+  color:#fff;
+  animation:fadeIn 1s ease;
+  text-shadow:0 4px 12px rgba(0,0,0,0.4);
+  
+}
+
+#moreBtn{
+  display:none;
+  margin-top:15px;
+  background:linear-gradient(135deg,#ff4d6d,#ff8fab);
+  color:white;
+  box-shadow:0 10px 25px rgba(255,77,109,0.6);
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ❤️ FLOATING HEARTS */
+.heart{
+  position:absolute;
+  bottom:-30px;
+  font-size:22px;
+  animation:floatUp linear infinite;
+  opacity:0.8;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(0) scale(1);opacity:1;}
+  to{transform:translateY(-110vh) scale(1.6);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 BACKGROUND MUSIC -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <img src="girl.jpg" class="girl-img">
+  <h1>Will you be my Valentine? 💘</h1>
+
+  <button id="yes">Yes 🙈</button>
+  <button id="no">No 😢</button>
+
+  <div id="loveMessage">I Love You ❤️</div>
+  <button id="moreBtn">Click More 💝</button>
+</div>
+
+<script>
+const noBtn=document.getElementById("no");
+const yesBtn=document.getElementById("yes");
+const love=document.getElementById("loveMessage");
+const more=document.getElementById("moreBtn");
+
+noBtn.addEventListener("mouseover",()=>{
+  noBtn.style.left=Math.random()*(window.innerWidth-100)+"px";
+  noBtn.style.top=Math.random()*(window.innerHeight-50)+"px";
+});
+
+yesBtn.addEventListener("click",()=>{
+  love.style.display="block";
+  more.style.display="inline-block";
+});
+
+more.addEventListener("click",()=>{
+  window.open("valentine.html","_blank");
+});
+
+/* ❤️ HEARTS */
+function heart(){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=Math.random()*20+18+"px";
+  h.style.animationDuration=Math.random()*3+4+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+}
+setInterval(heart,250);
+</script>
+
+</body>
+</html>
